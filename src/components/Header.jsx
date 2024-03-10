@@ -1,18 +1,23 @@
 import React from 'react'
-import { LogOut } from 'react-feather'
 import { useAuth } from '../utils/AuthContext'
+import { Link } from 'react-router-dom'
+import { LogOut, LogIn } from 'react-feather'
 
 const Header = () => {
-    const {user, handleUserLogout} = useAuth()
+    const {user, handleLogout} = useAuth()
   return (
     <div id="header--wrapper">
         {user ? (
             <>
                 Welcome {user.name}
-                <LogOut onClick={handleUserLogout} className="header--link"/>
+                <LogOut className="header--link" onClick={handleLogout}/>
             </>
-        ):(
-            <button>Login</button>
+        ): (
+            <>
+                <Link to="/">
+                    <LogIn className="header--link"/>
+                </Link>
+            </>
         )}
     </div>
   )

@@ -53,17 +53,17 @@ const Room = () => {
         e.preventDefault()
         console.log('MESSAGE:', messageBody)
 
-        let permissions = [
+        const permissions = [
             Permission.write(Role.user(user.$id)),
           ]
 
-        let payload = {
+        const payload = {
             user_id:user.$id,
             username:user.name,
             body:messageBody
         }
 
-        let response = await databases.createDocument(
+        const response = await databases.createDocument(
                 DATABASE_ID, 
                 COLLECTION_ID_MESSAGES, 
                 ID.unique(), 
@@ -85,7 +85,7 @@ const Room = () => {
      } 
 
   return (
-    <main className="container" >
+    <main className="container">
         <Header/>
         <div className="room--container">
 
